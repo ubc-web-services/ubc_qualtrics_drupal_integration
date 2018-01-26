@@ -116,6 +116,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 
 });
 ```
+> Source: Copyright 2018 The jQuery Foundation. jQuery License
 8. Click __save__ button, and find ![picture alt](screenshots/img22.png) button on top of the page.
 9. Click and you will see a pop-up window that looks like this:
 ![picture alt](screenshots/img23.png)
@@ -129,3 +130,4 @@ Qualtrics.SurveyEngine.addOnReady(function()
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 ```
 11. Click __Save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
+
