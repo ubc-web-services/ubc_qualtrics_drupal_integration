@@ -73,7 +73,7 @@ In JavaScript:
 ```javascript
 Qualtrics.SurveyEngine.addOnReady(function()
 {
-	$.getJSON('https://qualtrics.dp7prod.webi.it.ubc.ca/test-send-json-feed-to-qualtrics?v=1', function(data) {
+	$.getJSON('https://[your site domain]/[endpoint path]', function(data) {
 		var nodes = data.nodes;
 		var select = document.getElementById('select');
 		for (var item of nodes) {
@@ -89,7 +89,7 @@ In jQuery:
 ```jquery
 Qualtrics.SurveyEngine.addOnReady(function()
 {
-	$.getJSON('https://qualtrics.dp7prod.webi.it.ubc.ca/test-send-json-feed-to-qualtrics?v=1', function(data) {
+	$.getJSON('https://[your site domain]/[endpoint path]', function(data) {
 		var nodes = data.nodes;
 		for (var node of nodes) {
 			$('#select').append('<option value=\"' + node.node.Nid + '\">' + node.node.title + '</option>');
@@ -101,7 +101,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 ```jquery
 Qualtrics.SurveyEngine.addOnReady(function()
 {
-	$.getJSON('https://qualtrics.dp7prod.webi.it.ubc.ca/test-endpoint-program', function(data) {
+	$.getJSON('https://[your site domain]/[endpoint path]', function(data) {
 		var nodes = data.nodes;
 		$( function() {
 			var availableTags = [];
@@ -117,6 +117,9 @@ Qualtrics.SurveyEngine.addOnReady(function()
 });
 ```
 > Source: Copyright 2018 The jQuery Foundation. jQuery License
+
+Your __[endpoint path]__ is the path assigned to your page view
+
 8. Click __save__ button, and find ![picture alt](screenshots/img22.png) button on top of the page.
 9. Click and you will see a pop-up window that looks like this:
 ![picture alt](screenshots/img23.png)
