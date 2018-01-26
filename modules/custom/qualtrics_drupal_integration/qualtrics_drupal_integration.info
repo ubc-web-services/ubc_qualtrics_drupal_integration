@@ -1,0 +1,6 @@
+name = UBC Qualtrics Drupal Integration
+description = "A Qualtrics-Drupal integration helper module; adds header <Access-Control-Allow-Origin: *>"
+package = UBC IT Web Services
+dependencies[] = views_datasource:views_json
+
+core = 7.x
