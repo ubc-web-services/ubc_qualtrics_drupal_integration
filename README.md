@@ -73,7 +73,7 @@ In JavaScript:
 ```javascript
 Qualtrics.SurveyEngine.addOnReady(function()
 {
-	$.getJSON('https://[your site domain]/[endpoint path]', function(data) {
+	$.getJSON('https://[your-site-domain]/[endpoint-path]', function(data) {
 		var nodes = data.nodes;
 		var select = document.getElementById('select');
 		for (var item of nodes) {
@@ -89,7 +89,7 @@ In jQuery:
 ```jquery
 Qualtrics.SurveyEngine.addOnReady(function()
 {
-	$.getJSON('https://[your site domain]/[endpoint path]', function(data) {
+	$.getJSON('https://[your-site-domain]/[endpoint-path]', function(data) {
 		var nodes = data.nodes;
 		for (var node of nodes) {
 			$('#select').append('<option value=\"' + node.node.Nid + '\">' + node.node.title + '</option>');
@@ -101,7 +101,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 ```jquery
 Qualtrics.SurveyEngine.addOnReady(function()
 {
-	$.getJSON('https://[your site domain]/[endpoint path]', function(data) {
+	$.getJSON('https://[your-site-domain]/[endpoint-path]', function(data) {
 		var nodes = data.nodes;
 		$( function() {
 			var availableTags = [];
@@ -118,7 +118,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 ```
 > Source: Copyright 2018 The jQuery Foundation. jQuery License
 
-Your __[endpoint path]__ is the path assigned to your page view
+Your __[endpoint-path]__ is the path assigned to your page view
 
 8. Click __save__ button, and find ![picture alt](screenshots/img22.png) button on top of the page.
 9. Click and you will see a pop-up window that looks like this:
@@ -132,5 +132,17 @@ Your __[endpoint path]__ is the path assigned to your page view
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 ```
-11. Click __Save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
+11. Click __save__ button, and click your question to edit.
+12. Click __Rich Text Editor__.
+![picture alt](screenshots/img25.png)
+13. Click ![picture alt](screenshots/img26.png) button.
+14. For __Drop-down list__, copy and paste below line:
+```html
+<select id="select"></select>
+```
+15. For __Autocomplete text field__, copy and paste below line:
+```html
+<div class="ui-widget"><label for="tags">Enter: </label> <input id="tags" /></div>
+```
+16. Click __Save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
 
