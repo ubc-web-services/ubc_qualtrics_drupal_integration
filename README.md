@@ -29,7 +29,7 @@ In the case of demo, the link is https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz
 
 3. Save the page to see the survey embedded to the designated page.
 
-## How to get __[Anonymous Survey Link]__:
+## <div id="anonymous-survey-link">How to get __[Anonymous Survey Link]__:</div>
 1. Go to Qualtrics website and login using your CWL account.
 2. Create a survey for demo.
 ![picture alt](screenshots/img8.png)
@@ -39,7 +39,7 @@ For the purpose of demo, I created a survey titled as ___Test: Course Evaluation
 4. Go to __Distribution__ tab located at the top of the page, and the link will be provided when the page is loaded.
 ![picture alt](screenshots/img10.png)
 
-## Exporting JSON feeds from Drupal to Qualtrics:
+## <div id="exporting-json-feeds">Exporting JSON feeds from Drupal to Qualtrics:</div>
 1. Create a page view:
 * Go to Structure > Views > Add new view.
 * Select __Create a page__ and click Continue & Edit.
