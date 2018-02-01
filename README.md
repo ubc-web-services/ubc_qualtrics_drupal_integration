@@ -1,15 +1,33 @@
 # UBC Qualtrics-Drupal integration
-Table of Contents:
-* <a href="#embedding-qualtrics-survey">Embedding Qualtrics survey to a website</a>
-* <a href="#anonymous-survey-link">How to get __[Anonymous Survey Link]__</a>
-* <a href="#exporting-json-feeds">Exporting JSON feeds from Drupal to Qualtrics</a>
-	1. Creating a drop-down list
-	2. Creating an autocomplete text field
-
 A link to Qualtrics survey for demo: https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR
-<br />
-A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/
+<br />A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/
+## Table of Contents:
+- <a href="#getting-started" style="color:green;">Getting started</a>
+- <a href="#embedding-qualtrics-survey">Embedding Qualtrics survey to a website</a>
+- <a href="#anonymous-survey-link">How to get __[Anonymous Survey Link]__</a>
+- <a href="#exporting-json-feeds">Exporting JSON feeds from Drupal to Qualtrics</a>
+
 > Note: all screenshots are from Drupal website for demo which includes ___Administration menu___ module installed and enabled. If you started your own Drupal website, you can install the module to have the same look and feel of the website we are demonstrating.
+## <div id="getting-started">Getting started:</div>
+To learn more about Drupal, please visit https://drupal.org for more information.
+<br />To learn more about Qualtrics, please visit https://www.qualtrics.com for more information.
+### Required contrib modules:
+- Views
+- Views Datasource
+- Chaos Tools
+
+To download the above contrib modules, here is a [good tutorial](https://www.ostraining.com/blog/drupal/install-modules/) that covers how to install and enable contrib modules in Drupal.
+
+If you are comfortable using Drush, Drupal's command line tool, then you can run the following commands:
+```
+$ drush -y dl views views_datasource ctools
+$ drush -y en views views_json views_ui
+```
+
+### Required custom modules:
+- UBC Qualtrics Drupal Integration
+- UBC Qualtrics Static Endpoint
+If you are comfortable using Git, you can `$ git clone https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration.git` to download files. If not, you can choose to download a .zip file. [Here](https://stackoverflow.com/questions/2751227/how-to-download-source-in-zip-format-from-github/#18583977) is a good reference.
 ## <div id="embedding-qualtrics-survey">Embedding Qualtrics survey to a website:</div>
 1. Download Drupal and start building your own Drupal website.
 2. Create a basic page:
