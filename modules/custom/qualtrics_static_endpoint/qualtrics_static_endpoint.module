@@ -1,0 +1,67 @@
+<?php
+
+function qualtrics_custom_menu()
+{
+    
+    $items['ws/qualtrics/endpoint'] = array(
+        'title' => 'Qualtrics Endpoint',
+        'page callback' => 'qualtrics_custom_endpoint',
+        'access arguments' => array(
+            'access content'
+        )
+    );
+    
+    $items['test-endpoint'] = array(
+        'title' => 'Test endpoint',
+        'page callback' => 'qualtrics_custom_endpoint_test',
+        'access arguments' => array(
+            'access content'
+        )
+    );
+    
+    return $items;
+}
+
+function qualtrics_custom_endpoint()
+{
+    header('Access-Control-Allow-Origin: https://ubc.ca1.qualtrics.com', false);
+    
+    $out = array(
+        'yes',
+        'no',
+        'maybe so'
+    );
+    
+    $data = array();
+    foreach ($out as $key => $val) {
+        $data[] = array(
+            'value' => strval($key + 1),
+            'label' => $val
+        );
+    }
+    
+    drupal_json_output(array(
+        'options' => $data
+    ));
+    exit;
+}
+
+function qualtrics_custom_endpoint_test()
+{
+    header('Access-Control-Allow-Origin: https://ubc.ca1.qualtrics.com', false);
+    $nodes = node_load_multiple(NULL, array(
+        'type' => "news"
+    ));
+    $key = 0;
+    foreach ($nodes as $nid => $node) {
+        $data[] = array(
+            'value' => strval($key + 1),
+            'label' => $node->title
+        );
+        $key = $key + 1;
+    }
+    drupal_json_output(array(
+        'options' => $data
+    ));
+    exit;
+}
