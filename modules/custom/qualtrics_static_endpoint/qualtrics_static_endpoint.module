@@ -1,6 +1,8 @@
 <?php
-
-function qualtrics_custom_menu()
+/**
+ * Implements hook_menu().
+ */
+function qualtrics_static_endpoint_menu()
 {
     
     $items['ws/qualtrics/endpoint'] = array(
@@ -22,7 +24,25 @@ function qualtrics_custom_menu()
     return $items;
 }
 
-function qualtrics_custom_endpoint()
+/**
+ * Writes a custom static JSON feed to export:
+ * {
+ *      'options': [
+ *      {
+ *           'value': 1,
+ *           'label': 'yes'
+ *      },
+ *      {
+ *           'value': 2,
+ *           'label': 'no'
+ *      },
+ *      {
+ *           'value': 3,
+ *           'label': 'maybe'
+ *      }]
+ *}
+ */
+function qualtrics_static_endpoint_endpoint()
 {
     header('Access-Control-Allow-Origin: https://ubc.ca1.qualtrics.com', false);
     
@@ -40,26 +60,6 @@ function qualtrics_custom_endpoint()
         );
     }
     
-    drupal_json_output(array(
-        'options' => $data
-    ));
-    exit;
-}
-
-function qualtrics_custom_endpoint_test()
-{
-    header('Access-Control-Allow-Origin: https://ubc.ca1.qualtrics.com', false);
-    $nodes = node_load_multiple(NULL, array(
-        'type' => "news"
-    ));
-    $key = 0;
-    foreach ($nodes as $nid => $node) {
-        $data[] = array(
-            'value' => strval($key + 1),
-            'label' => $node->title
-        );
-        $key = $key + 1;
-    }
     drupal_json_output(array(
         'options' => $data
     ));
