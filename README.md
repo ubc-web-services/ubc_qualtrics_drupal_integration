@@ -27,8 +27,8 @@ $ drush -y en views views_json views_ui
 ```
 
 ### Required custom modules:
-- UBC Qualtrics Drupal Integration
-- UBC Qualtrics Static Endpoint
+- UBC Qualtrics Drupal Integration [≫](https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration/tree/master/modules/custom/qualtrics_drupal_integration)
+- UBC Qualtrics Static Endpoint [≫](https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration/tree/master/modules/custom/qualtrics_static_endpoint)
 
 If you are comfortable using Git, you can 
 ```
