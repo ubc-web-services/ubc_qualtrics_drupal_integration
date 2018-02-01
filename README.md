@@ -215,8 +215,8 @@ There is a quick way to check whether Qualtrics Drupal Integration module has be
 2. At the top of the browser, there are three tabs: __JSON, Raw Data, and Headers__. If you click __Headers__, you should see Access-Control-Allow-Origin header similar to this:
 
 ![picture alt](screenshots/img28.png)
-
 under __Response Headers__.
+
 3. If not, you would want to go back to your Drupal website and see if the __module has been installed and enabled__, and make sure that __all the caches are cleared__.
 
 ### When adding custom CSS or JavaScript files in Drupal
