@@ -212,8 +212,10 @@ Your __[endpoint-path]__ is the path assigned to your page view
 ### If questions are not displayed properly or failed to retrieve JSON feeds from Qualtrics side:
 There is a quick way to check whether Qualtrics Drupal Integration module has been set up properly in __Firefox__.<br />
 1. Go to your website and locate the page view with the JSON feeds you wish to export.
-2. At the top of the browser, there are three tabs: __JSON, Raw Data, and Headers__. If you click __Headers__, you should see
+2. At the top of the browser, there are three tabs: __JSON, Raw Data, and Headers__. If you click __Headers__, you should see Access-Control-Allow-Origin header similar to this:
+
 ![picture alt](screenshots/img28.png)
+
 under __Response Headers__.
 3. If not, you would want to go back to your Drupal website and see if the __module has been installed and enabled__, and make sure that __all the caches are cleared__.
 
