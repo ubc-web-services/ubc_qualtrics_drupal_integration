@@ -2,15 +2,15 @@
 A link to Qualtrics survey for demo: https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR
 <br />A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/
 ## Table of Contents:
-- <a href="#getting-started" style="color:green;">Getting started</a>
-- <a href="#embedding-qualtrics-survey">Embedding Qualtrics survey to a website</a>
-- <a href="#anonymous-survey-link">How to get __[Anonymous Survey Link]__</a>
-- <a href="#exporting-json-feeds">Exporting JSON feeds from Drupal to Qualtrics</a>
-
-> Note: all screenshots are from Drupal website for demo which includes ___Administration menu___ module installed and enabled. If you started your own Drupal website, you can install the module to have the same look and feel of the website we are demonstrating.
+- [Getting started](#getting-started)
+- [Embedding Qualtrics survey to a website](#embedding-qualtrics-survey)
+- [How to get __[Anonymous Survey Link]__](#anonymous-survey-link)
+- [Exporting JSON feeds from Drupal to Qualtrics](#exporting-json-feeds)
+- [For Developers: Guide to Debug](#developers-info)
 ## <div id="getting-started">Getting started:</div>
 To learn more about Drupal, please visit https://drupal.org for more information.
 <br />To learn more about Qualtrics, please visit https://www.qualtrics.com for more information.
+
 ### Required contrib modules:
 - Views
 - Views Datasource
@@ -28,42 +28,43 @@ $ drush -y en views views_json views_ui
 - UBC Qualtrics Drupal Integration
 - UBC Qualtrics Static Endpoint
 If you are comfortable using Git, you can `$ git clone https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration.git` to download files. If not, you can choose to download a .zip file. [Here](https://stackoverflow.com/questions/2751227/how-to-download-source-in-zip-format-from-github/#18583977) is a good reference.
+
+> Note: all screenshots are from Drupal website for demo which includes ___Administration menu___ module installed and enabled. If you started your own Drupal website, you can install the module to have the same look and feel of the website we are demonstrating.
+
 ## <div id="embedding-qualtrics-survey">Embedding Qualtrics survey to a website:</div>
 1. Download Drupal and start building your own Drupal website.
 2. Create a basic page:
-    Go to Content > Add content > Page.
-    ![picture alt](screenshots/img11.png)
-    Select ![picture alt](screenshots/img15.png) button located at the bottom row of the text editing tools.
-    In Body field, add:
-    <br />
+	Go to __Content > Add content > Page__.
+	![picture alt](screenshots/img11.png)
+	Select ![picture alt](screenshots/img15.png) button located at the bottom row of the text editing tools.
+	In Body field, add:<br />
 ```html
 <iframe align="middle" frameborder="no" height="800px" name="qualtrics" scrolling="auto" src=[Anonymous Survey Link] width="800px"></iframe>
 ```
 ![picture alt](screenshots/img14.png)
-<br />
-You can copy and paste the above line, but you __must__ replace the [Anonymous Survey Link] with your own survey link.
-You can retrieve your own [Anonymous Survey Link] with the step-by-step instruction provided __below__.
-In the case of demo, the link is https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR.
+	<br />
+	You can copy and paste the above line, but you __must__ replace the __[Anonymous Survey Link]__ with your own.
+	<br />You can retrieve your own __[Anonymous Survey Link]__ with the step-by-step [instruction](#anonymous-survey-link).
+	<br />In the case of demo, the link is https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR.
 
 3. Save the page to see the survey embedded to the designated page.
 
 ## <div id="anonymous-survey-link">How to get __[Anonymous Survey Link]__:</div>
 1. Go to Qualtrics website and login using your CWL account.
 2. Create a survey for demo.
-![picture alt](screenshots/img8.png)
-For the purpose of demo, I created a survey titled as ___Test: Course Evaluation___.
+	![picture alt](screenshots/img8.png)
+	For the purpose of demo, I created a survey titled as ___Test: Course Evaluation___.
 3. Click the survey title to see the page similar to this:
-![picture alt](screenshots/img9.png)
+	![picture alt](screenshots/img9.png)
 4. Go to __Distribution__ tab located at the top of the page, and the link will be provided when the page is loaded.
-![picture alt](screenshots/img10.png)
+	![picture alt](screenshots/img10.png)
 
 ## <div id="exporting-json-feeds">Exporting JSON feeds from Drupal to Qualtrics:</div>
 1. Create a page view:
-* Go to Structure > Views > Add new view.
-* Select __Create a page__ and click Continue & Edit.
-* Under __Format__ field, click Unformatted list.
-* Click __JSON data document__ and click __Apply (all displays)__.
-![picture alt](screenshots/img16.png)<br />
+	Go to __Structure > Views > Add new view__ and select __Create a page__. Click __Continue & Edit__.
+	Under __Format__ field, click Unformatted list.
+	Click __JSON data document__ and click __Apply (all displays)__.
+	![picture alt](screenshots/img16.png)<br />
 2. Once saved, you will be able to see the preview at the bottom of the page that is similar to this:
 ```
 {
@@ -171,3 +172,9 @@ Your __[endpoint-path]__ is the path assigned to your page view
 ```
 16. Click __Save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
 
+## <div id="developers-info">For Developers: Guide to Debug</div>
+#### In Firefox:
+There is a quick way to check whether Qualtrics Drupal Integration module has been set up properly.<br />
+1. Go to your website and locate the page view with the JSON feeds you wish to export.
+2. At the top of the browser, there are three tabs: __JSON, Raw Data, and Headers__. If you click __Headers__, you should see __Access-Control-Allow-Origin https://xxx.qualtrics.com__ under __Response Headers__.
+3. If not, you would want to go back to your Drupal website and see if the __module has been installed and enabled__, and make sure that __all the caches are cleared__.
