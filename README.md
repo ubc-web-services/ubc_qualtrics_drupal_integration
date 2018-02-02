@@ -74,7 +74,6 @@ You can copy and paste the above line, but you __must__ replace the __[anonymous
 .embedded-survey {
     position: relative;
     padding-bottom: 56.25%;
-    padding-top: 35px;
     height: 0;
     overflow: hidden;
 }
