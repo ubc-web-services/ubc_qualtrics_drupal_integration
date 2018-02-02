@@ -105,7 +105,10 @@ For the purpose of demo, I created a survey titled as ___Test: Course Evaluation
 Go to __Structure > Views > Add new view__ and select __Create a page__. Click __Continue & Edit__.
 Under __Format__ field, click __Unformatted list__.
 Click __JSON data document__ and click __Apply (all displays)__.
-![picture alt](screenshots/img16.png)<br />
+![picture alt](screenshots/img16.png)
+
+<strong>For the advanced Drupal developers:</strong> you can choose to select __Fields__ instead of __Contents__ to export fields of your choice. In addition, you can choose different display modes(e.x. Default, etc.) other than __Teaser__ demonstrated in our example.
+
 2. Once saved, you will be able to see the preview at the bottom of the page that is similar to this:
 ```
 {
