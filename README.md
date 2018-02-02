@@ -107,7 +107,7 @@ Under __Format__ field, click __Unformatted list__.
 Click __JSON data document__ and click __Apply (all displays)__.
 ![picture alt](screenshots/img16.png)
 
-<strong>For the advanced Drupal developers:</strong> you can choose to select __Fields__ instead of __Contents__ to export fields of your choice. In addition, you can choose different display modes(e.x. Default, etc.) other than __Teaser__ demonstrated in our example.
+<strong>For the advanced Drupal developers:</strong> you can choose to select __Fields__ instead of __Contents__ to export fields of your choice. Moreover, you can choose different display modes(e.x. Default, etc.) other than __Teaser__ demonstrated in our example for a desired display style.
 
 2. Once saved, you will be able to see the preview at the bottom of the page that is similar to this:
 ```
