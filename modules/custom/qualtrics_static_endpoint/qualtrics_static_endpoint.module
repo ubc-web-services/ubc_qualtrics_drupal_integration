@@ -7,7 +7,7 @@ function qualtrics_static_endpoint_menu()
     
     $items['ws/qualtrics/endpoint'] = array(
         'title' => 'Qualtrics Endpoint',
-        'page callback' => 'qualtrics_custom_endpoint',
+        'page callback' => 'qualtrics_static_endpoint_endpoint',
         'access arguments' => array(
             'access content'
         )
