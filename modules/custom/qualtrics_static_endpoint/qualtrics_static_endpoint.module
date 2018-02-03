@@ -13,14 +13,6 @@ function qualtrics_static_endpoint_menu()
         )
     );
     
-    $items['test-endpoint'] = array(
-        'title' => 'Test endpoint',
-        'page callback' => 'qualtrics_custom_endpoint_test',
-        'access arguments' => array(
-            'access content'
-        )
-    );
-    
     return $items;
 }
 
@@ -49,7 +41,7 @@ function qualtrics_static_endpoint_endpoint()
     $out = array(
         'yes',
         'no',
-        'maybe so'
+        'maybe'
     );
     
     $data = array();
