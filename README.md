@@ -138,7 +138,11 @@ If you click __Settings__ next to JSON data document under __Format__ field, you
 
 5. There are __two__ question types that will be discussed in this demo: creating a drop-down list or an autocomplete text field:
 
-* To create a __drop-down list__, create a question of type __Multiple Choice__. Then, right-click the question card of interest to locate __Add JavaScript__ option.
+* To create a __drop-down list__, create a question of type __Dropdown List__ under __Multiple Choice__.
+
+![picture alt](screenshots/img31.png)
+
+Then, right-click the question card of interest to locate __Add JavaScript__ option.
 
 ![picture alt](screenshots/img21.png)
 
@@ -169,7 +173,11 @@ Qualtrics.SurveyEngine.addOnReady(function() {
 
 __NOTE:__ The variable ___counter___, which is incremented at each loop, will be assigned as a __value__ attribute to each option.
 
-* To create an __autocomplete text field__, create a question of type __Text Entry__. Then, right-click the question card of interest to locate __Add JavaScript__ option.
+* To create an __autocomplete text field__, create a question of type __Single Line__ under __Text Entry__.
+
+![picture alt](screenshots/img32.png)
+
+Then, right-click the question card of interest to locate __Add JavaScript__ option.
 
 ![picture alt](screenshots/img21.png)
 
