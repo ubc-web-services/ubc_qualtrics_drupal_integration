@@ -140,47 +140,40 @@ For the purpose of demo, I created a question titled as ___Test drop-down list f
 * To create a __drop-down list__, copy and paste the code provided below:<br />
 In JavaScript:
 ```javascript
-Qualtrics.SurveyEngine.addOnReady(function () {
-	$.getJSON('https://[your-site-domain]/[endpoint-path]', function (data) {
-		var nodes = data.nodes;
-		var select = document.getElementById('select');
-		for (var item of nodes) {
-			var temp = document.createElement('option');
-			var text = document.createTextNode(item.node.title);
-			temp.appendChild(text);
-			select.appendChild(temp);
-		}
-	});
+Qualtrics.SurveyEngine.addOnReady(function() {
+    $.getJSON('https://[YOUR_SITE_DOMAIN/END_POINT]', function(data) {
+        var nodes = data.options;
+        var counter = 1;
+        for (var node of nodes) {
+            document.getElementById("QR~QIDXX~" + counter).innerHTML = node.label;
+            counter++;
+        }
+    });
 });
 ```
+
+* To create an __autocomplete text field__, copy and paste the code provided below:<br />
 In jQuery:
 ```javascript
-Qualtrics.SurveyEngine.addOnReady(function () {
-	$.getJSON('https://[your-site-domain]/[endpoint-path]', function (data) {
-		var nodes = data.nodes;
-		for (var node of nodes) {
-			$('#select').append('<option value=\"' + node.node.Nid + '\">' + node.node.title + '</option>');
-		}
-	});
+Qualtrics.SurveyEngine.addOnReady(function() {
+    $.getJSON('https://[YOUR_SITE_DOMAIN/END_POINT]', function(data) {
+        var nodes = data.nodes;
+        var availableTags = [];
+        for (var node of nodes) {
+            availableTags.push(node.node.title);
+        }
+        var org_html = '<input type="TEXT" autocomplete="off" id="QR~QIDXX" value="" class="InputText QR-QIDXX QWatchTimer ui-autocomplete-input" name="QR~QIDXX~TEXT" data-runtime-textvalue="runtime.Value" style="width: 324px;" aria-describedby="QR~QIDXX~VALIDATION">'
+        var new_html = '<div id="ui-widget">' + org_html + '</div>';
+        $('.QR-QIDXX').html(new_html);
+        $(".QR-QIDXX").autocomplete({
+            source: availableTags
+        });
+    });
 });
 ```
-* To create an __autocomplete text field__, copy and paste the code provided below:<br />
-```javascript
-Qualtrics.SurveyEngine.addOnReady(function () {
-	$.getJSON('https://qualtrics.dp7prod.webi.it.ubc.ca/test-endpoint-program', function (data) {
-		var nodes = data.nodes;
-		var availableTags = [];
-		for (var node of nodes) {
-			availableTags.push(node.node.title);
-		}
-		$("#tags").autocomplete({
-			source: availableTags
-		});
-	});
+__IMPORTANT:__ Note that __QR~QIDXX__ and __QR-QIDXX__ are unique to each question, and they need to be replaced. You can find the last two digits of your question ID's and classes by going to the preview of your survey, inspect the page and hover over the question of your interest and look for __ID__.
 
-});
-```
-> Source: Copyright 2018 The jQuery Foundation. jQuery License
+![picture alt](screenshots/img27.png)
 
 Your __[endpoint-path]__ is the path assigned to your page view
 
