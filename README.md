@@ -141,7 +141,7 @@ For the purpose of demo, I created a question titled as ___Test drop-down list f
 In JavaScript:
 ```javascript
 Qualtrics.SurveyEngine.addOnReady(function() {
-    $.getJSON('https://[YOUR_SITE_DOMAIN/END_POINT]', function(data) {
+    $.getJSON('https://[YOUR_SITE_DOMAIN/ENDPOINT]', function(data) {
         var nodes = data.options;
         var counter = 1;
         for (var node of nodes) {
@@ -156,7 +156,7 @@ Qualtrics.SurveyEngine.addOnReady(function() {
 In jQuery:
 ```javascript
 Qualtrics.SurveyEngine.addOnReady(function() {
-    $.getJSON('https://[YOUR_SITE_DOMAIN/END_POINT]', function(data) {
+    $.getJSON('https://[YOUR_SITE_DOMAIN/ENDPOINT]', function(data) {
         var nodes = data.nodes;
         var availableTags = [];
         for (var node of nodes) {
@@ -173,9 +173,12 @@ Qualtrics.SurveyEngine.addOnReady(function() {
 ```
 __IMPORTANT:__ Note that __QR~QIDXX__ and __QR-QIDXX__ are unique to each question, and they need to be replaced. You can find the last two digits of your question ID's and classes by going to the preview of your survey, inspect the page and hover over the question of your interest and look for __ID__.
 
-![picture alt](screenshots/img27.png)
+![picture alt](screenshots/img29.png)
 
-Your __[endpoint-path]__ is the path assigned to your page view
+In this case, the question ID is __QR~QID80__, highlighted in ___orange___ color.
+![picture alt](screenshots/img30.png)
+
+Your __[YOUR_SITE_DOMAIN/ENDPOINT]__ is the path assigned to your page view created for exporting JSON feeds.
 
 8. Click __save__ button, and find ![picture alt](screenshots/img22.png) button on top of the page.
 9. Click and you will see a pop-up window that looks like this:
