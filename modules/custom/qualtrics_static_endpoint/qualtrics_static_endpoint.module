@@ -1,0 +1,59 @@
+<?php
+/**
+ * Implements hook_menu().
+ */
+function qualtrics_static_endpoint_menu()
+{
+    
+    $items['ws/qualtrics/endpoint'] = array(
+        'title' => 'Qualtrics Endpoint',
+        'page callback' => 'qualtrics_static_endpoint_endpoint',
+        'access arguments' => array(
+            'access content'
+        )
+    );
+    
+    return $items;
+}
+
+/**
+ * Writes a custom static JSON feed to export:
+ * {
+ *      'options': [
+ *      {
+ *           'value': 1,
+ *           'label': 'yes'
+ *      },
+ *      {
+ *           'value': 2,
+ *           'label': 'no'
+ *      },
+ *      {
+ *           'value': 3,
+ *           'label': 'maybe'
+ *      }]
+ *}
+ */
+function qualtrics_static_endpoint_endpoint()
+{
+    header('Access-Control-Allow-Origin: https://ubc.ca1.qualtrics.com', false);
+    
+    $out = array(
+        'yes',
+        'no',
+        'maybe'
+    );
+    
+    $data = array();
+    foreach ($out as $key => $val) {
+        $data[] = array(
+            'value' => strval($key + 1),
+            'label' => $val
+        );
+    }
+    
+    drupal_json_output(array(
+        'options' => $data
+    ));
+    exit;
+}

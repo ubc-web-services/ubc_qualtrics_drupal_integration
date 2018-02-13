@@ -5,6 +5,6 @@
  * You can modify the url address below 'https://ubc.ca1.qualtrics.com' to the address you would like to be granted access to.
  * 
  */
-function qualtrics_custom_views_pre_render(&$view) {
+function qualtrics_drupal_integration_views_pre_render(&$view) {
 	header('Access-Control-Allow-Origin: https://ubc.ca1.qualtrics.com', false);
 }

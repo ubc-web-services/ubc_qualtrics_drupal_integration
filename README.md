@@ -1,70 +1,113 @@
-# UBC Qualtrics-Drupal integration
+# <div id="top">UBC Qualtrics-Drupal integration</div>
 A link to Qualtrics survey for demo: https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR
 <br />A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/
 ## Table of Contents:
-- [Getting started](#getting-started)
-- [Embedding Qualtrics survey to a website](#embedding-qualtrics-survey)
-- [How to get __[Anonymous Survey Link]__](#anonymous-survey-link)
-- [Exporting JSON feeds from Drupal to Qualtrics](#exporting-json-feeds)
-- [For Developers: Guide to Debug](#developers-info)
+- Getting started [≫](#getting-started)
+- Embedding Qualtrics survey to a website [≫](#embedding-qualtrics-survey)
+- How to make an embedded survey responsive [≫](#responsive-survey)
+- How to get [anonymous-survey-link] [≫](#anonymous-survey-link)
+- Exporting JSON feeds from Drupal to Qualtrics [≫](#exporting-json-feeds)
+- For Developers: Guide to Debug [≫](#developers-info)
 ## <div id="getting-started">Getting started:</div>
-To learn more about Drupal, please visit https://drupal.org for more information.
-<br />To learn more about Qualtrics, please visit https://www.qualtrics.com for more information.
+To learn more about Drupal, please visit [here](https://drupal.org) for more information.
+<br />To learn more about Qualtrics, please visit [here](https://www.qualtrics.com) for more information.
 
 ### Required contrib modules:
-- Views
-- Views Datasource
-- Chaos Tools
+- Views [≫](https://www.drupal.org/project/views)
+- Views Datasource [≫](https://www.drupal.org/project/views_datasource)
+- Chaos Tools Suite [≫](https://www.drupal.org/project/ctools)
+- CKEditor - WYSIWYG HTML editor [≫](https://www.drupal.org/project/ckeditor)
 
 To download the above contrib modules, here is a [good tutorial](https://www.ostraining.com/blog/drupal/install-modules/) that covers how to install and enable contrib modules in Drupal.
 
 If you are comfortable using Drush, Drupal's command line tool, then you can run the following commands:
 ```
-$ drush -y dl views views_datasource ctools
+$ drush -y dl views views_datasource ctools ckeditor
 $ drush -y en views views_json views_ui
 ```
 
 ### Required custom modules:
-- UBC Qualtrics Drupal Integration
-- UBC Qualtrics Static Endpoint
-If you are comfortable using Git, you can `$ git clone https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration.git` to download files. If not, you can choose to download a .zip file. [Here](https://stackoverflow.com/questions/2751227/how-to-download-source-in-zip-format-from-github/#18583977) is a good reference.
+- UBC Qualtrics Drupal Integration [≫](https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration/tree/master/modules/custom/qualtrics_drupal_integration)
+- UBC Qualtrics Static Endpoint [≫](https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration/tree/master/modules/custom/qualtrics_static_endpoint)
 
-> Note: all screenshots are from Drupal website for demo which includes ___Administration menu___ module installed and enabled. If you started your own Drupal website, you can install the module to have the same look and feel of the website we are demonstrating.
+If you are comfortable using Git, you can 
+```
+$ git clone https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration.git
+```
+to download files. If not, you can choose to download a .zip file. [Here](https://stackoverflow.com/questions/2751227/how-to-download-source-in-zip-format-from-github/#18583977) is a good reference.
+
+## Settings information in this demo:
+- Theme: UBC CLF 7.0.4 Drupal Theme 3.0 [≫](https://github.com/ubc-web-services/Megatron)
+- Administration theme: Adminimal - Responsive Administration Theme [≫](https://www.drupal.org/project/adminimal_theme)
+- Additional installed modules:
+	- Administration menu [≫](https://www.drupal.org/project/admin_menu)
+
+> Note: All screenshots are from Drupal website for demo. If you started your own Drupal website, you can install the modules mentioned above to have the same look and feel of the website we are demonstrating.
 
 ## <div id="embedding-qualtrics-survey">Embedding Qualtrics survey to a website:</div>
 1. Download Drupal and start building your own Drupal website.
 2. Create a basic page:
-	Go to __Content > Add content > Page__.
-	![picture alt](screenshots/img11.png)
-	Select ![picture alt](screenshots/img15.png) button located at the bottom row of the text editing tools.
-	In Body field, add:<br />
+Go to __Content > Add content > Page__.
+Select ![picture alt](screenshots/img15.png) button located at the bottom row of the text editing tools.
+In Body field, add:<br />
 ```html
-<iframe align="middle" frameborder="no" height="800px" name="qualtrics" scrolling="auto" src=[Anonymous Survey Link] width="800px"></iframe>
+<iframe align="middle" frameborder="no" height="800px" name="qualtrics" scrolling="auto" src=[anonymous-survey-link] width="800px"></iframe>
 ```
 ![picture alt](screenshots/img14.png)
-	<br />
-	You can copy and paste the above line, but you __must__ replace the __[Anonymous Survey Link]__ with your own.
-	<br />You can retrieve your own __[Anonymous Survey Link]__ with the step-by-step [instruction](#anonymous-survey-link).
-	<br />In the case of demo, the link is https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR.
+<br />
+You can copy and paste the above line, but you __must__ replace the __[anonymous-survey-link]__ with your own.
+<br />You can retrieve your own __[anonymous-survey-link]__ with the step-by-step [instruction](#anonymous-survey-link).
+<br />In the case of demo, the link is https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR.
 
 3. Save the page to see the survey embedded to the designated page.
+## <div id="responsive-survey">How to make an embedded survey responsive:</div>
+1. Go to the page on your Drupal website with a Qualtrics survey embedded from the previous step and click __Edit__.
+2. In the __Body__ field, add a containing wrapper around `iframe`. You can choose to copy and paste the below example:
+```html
+<div class="embedded-survey">
+	<iframe align="middle" frameborder="no" height="800px" name="qualtrics" scrolling="auto" src=[Anonymous Survey Link] width="800px">
+	</iframe>
+</div>
+```
+3. Add the below line of code in your CSS file or wrap around `<style>` tag:
+```css
+.embedded-survey {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+.embedded-survey iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+```
+4. Click __Save__.
 
-## <div id="anonymous-survey-link">How to get __[Anonymous Survey Link]__:</div>
+For more information, visit [here](https://www.smashingmagazine.com/2014/02/making-embedded-content-work-in-responsive-design/).
+
+## <div id="anonymous-survey-link">How to get [anonymous-survey-link]:</div>
 1. Go to Qualtrics website and login using your CWL account.
 2. Create a survey for demo.
-	![picture alt](screenshots/img8.png)
-	For the purpose of demo, I created a survey titled as ___Test: Course Evaluation___.
+![picture alt](screenshots/img8.png)
+For the purpose of demo, I created a survey titled as ___Test: Course Evaluation___.
 3. Click the survey title to see the page similar to this:
-	![picture alt](screenshots/img9.png)
+![picture alt](screenshots/img9.png)
 4. Go to __Distribution__ tab located at the top of the page, and the link will be provided when the page is loaded.
-	![picture alt](screenshots/img10.png)
+![picture alt](screenshots/img10.png)
 
 ## <div id="exporting-json-feeds">Exporting JSON feeds from Drupal to Qualtrics:</div>
 1. Create a page view:
-	Go to __Structure > Views > Add new view__ and select __Create a page__. Click __Continue & Edit__.
-	Under __Format__ field, click Unformatted list.
-	Click __JSON data document__ and click __Apply (all displays)__.
-	![picture alt](screenshots/img16.png)<br />
+Go to __Structure > Views > Add new view__ and select __Create a page__. Click __Continue & Edit__.
+Under __Format__ field, click __Unformatted list__.
+Click __JSON data document__ and click __Apply (all displays)__.
+![picture alt](screenshots/img16.png)
+
+<strong>For the advanced Drupal developers:</strong> you can choose to select __Fields__ instead of __Contents__ to export fields of your choice. Moreover, you can choose different display modes(e.x. Default, etc.) other than __Teaser__ demonstrated in our example for a desired display style.
+
 2. Once saved, you will be able to see the preview at the bottom of the page that is similar to this:
 ```
 {
@@ -97,9 +140,8 @@ For the purpose of demo, I created a question titled as ___Test drop-down list f
 * To create a __drop-down list__, copy and paste the code provided below:<br />
 In JavaScript:
 ```javascript
-Qualtrics.SurveyEngine.addOnReady(function()
-{
-	$.getJSON('https://[your-site-domain]/[endpoint-path]', function(data) {
+Qualtrics.SurveyEngine.addOnReady(function () {
+	$.getJSON('https://[your-site-domain]/[endpoint-path]', function (data) {
 		var nodes = data.nodes;
 		var select = document.getElementById('select');
 		for (var item of nodes) {
@@ -112,10 +154,9 @@ Qualtrics.SurveyEngine.addOnReady(function()
 });
 ```
 In jQuery:
-```jquery
-Qualtrics.SurveyEngine.addOnReady(function()
-{
-	$.getJSON('https://[your-site-domain]/[endpoint-path]', function(data) {
+```javascript
+Qualtrics.SurveyEngine.addOnReady(function () {
+	$.getJSON('https://[your-site-domain]/[endpoint-path]', function (data) {
 		var nodes = data.nodes;
 		for (var node of nodes) {
 			$('#select').append('<option value=\"' + node.node.Nid + '\">' + node.node.title + '</option>');
@@ -124,19 +165,16 @@ Qualtrics.SurveyEngine.addOnReady(function()
 });
 ```
 * To create an __autocomplete text field__, copy and paste the code provided below:<br />
-```jquery
-Qualtrics.SurveyEngine.addOnReady(function()
-{
-	$.getJSON('https://[your-site-domain]/[endpoint-path]', function(data) {
+```javascript
+Qualtrics.SurveyEngine.addOnReady(function () {
+	$.getJSON('https://qualtrics.dp7prod.webi.it.ubc.ca/test-endpoint-program', function (data) {
 		var nodes = data.nodes;
-		$( function() {
-			var availableTags = [];
-			for (var node of nodes) {
-				availableTags.push(node.node.title);
-			}
-			$( "#tags" ).autocomplete({
-				source: availableTags
-			});
+		var availableTags = [];
+		for (var node of nodes) {
+			availableTags.push(node.node.title);
+		}
+		$("#tags").autocomplete({
+			source: availableTags
 		});
 	});
 
@@ -173,8 +211,22 @@ Your __[endpoint-path]__ is the path assigned to your page view
 16. Click __Save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
 
 ## <div id="developers-info">For Developers: Guide to Debug</div>
-#### In Firefox:
-There is a quick way to check whether Qualtrics Drupal Integration module has been set up properly.<br />
+### If questions are not displayed properly or failed to retrieve JSON feeds from Qualtrics side:
+There is a quick way to check whether Qualtrics Drupal Integration module has been set up properly in __Firefox__.<br />
 1. Go to your website and locate the page view with the JSON feeds you wish to export.
-2. At the top of the browser, there are three tabs: __JSON, Raw Data, and Headers__. If you click __Headers__, you should see __Access-Control-Allow-Origin https://xxx.qualtrics.com__ under __Response Headers__.
+2. At the top of the browser, there are three tabs: __JSON, Raw Data, and Headers__. If you click __Headers__, you should see Access-Control-Allow-Origin header similar to this:
+
+![picture alt](screenshots/img28.png)
+<br />under __Response Headers__.
+
 3. If not, you would want to go back to your Drupal website and see if the __module has been installed and enabled__, and make sure that __all the caches are cleared__.
+
+### When adding custom CSS or JavaScript files in Drupal
+By default, Drupal automatically optimizes external resources to reduce both the size and number of requests made to your website.
+Hence, you want to make sure that these options are disabled in order to properly load your custom CSS and JavaScript files:
+1. Go to __Configuration > Development > Performance__ or simply __admin/config/development/performance__.
+2. Under __Bandwidth Optimization__, disable all three options: Compress cached pages, Aggregate and compress CSS files, and Aggregate JavaScript files.
+![picture alt](screenshots/img27.png)
+3. Click __Save Configuration__.
+
+Back to Top [__≫__](#top)

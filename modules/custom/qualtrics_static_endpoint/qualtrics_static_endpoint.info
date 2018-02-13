@@ -1,0 +1,5 @@
+name = UBC Qualtrics Static Endpoint
+description = "A Qualtrics Custom Sandbox"
+package = UBC IT Web Services
+
+core = 7.x
