@@ -1,22 +1,23 @@
 # <div id="top">UBC Qualtrics-Drupal integration</div>
-A link to Qualtrics survey for demo: https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR
-<br />A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/
+A link to Qualtrics survey for demo: https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR<br>
+A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/
+
 ## Table of Contents:
-- Getting started [≫](#getting-started)
-- Embedding Qualtrics survey to a website [≫](#embedding-qualtrics-survey)
-- How to make an embedded survey responsive [≫](#responsive-survey)
-- How to get [anonymous-survey-link] [≫](#anonymous-survey-link)
-- Exporting JSON feeds from Drupal to Qualtrics [≫](#exporting-json-feeds)
-- For Developers: Guide to Debug [≫](#developers-info)
+- Getting started [&#10140;](#getting-started)
+- Embedding Qualtrics survey to a website [&#10140;](#embedding-qualtrics-survey)
+- How to make an embedded survey responsive [&#10140;](#responsive-survey)
+- How to get [anonymous-survey-link] [&#10140;](#anonymous-survey-link)
+- Exporting JSON feeds from Drupal to Qualtrics [&#10140;](#exporting-json-feeds)
+- For Developers: Guide to Debug [&#10140;](#developers-info)
 ## <div id="getting-started">Getting started:</div>
 To learn more about Drupal, please visit [here](https://drupal.org) for more information.
 <br />To learn more about Qualtrics, please visit [here](https://www.qualtrics.com) for more information.
 
 ### Required contrib modules:
-- Views [≫](https://www.drupal.org/project/views)
-- Views Datasource [≫](https://www.drupal.org/project/views_datasource)
-- Chaos Tools Suite [≫](https://www.drupal.org/project/ctools)
-- CKEditor - WYSIWYG HTML editor [≫](https://www.drupal.org/project/ckeditor)
+- Views [&#10140;](https://www.drupal.org/project/views)
+- Views Datasource [&#10140;](https://www.drupal.org/project/views_datasource)
+- Chaos Tools Suite [&#10140;](https://www.drupal.org/project/ctools)
+- CKEditor - WYSIWYG HTML editor [&#10140;](https://www.drupal.org/project/ckeditor)
 
 To download the above contrib modules, here is a [good tutorial](https://www.ostraining.com/blog/drupal/install-modules/) that covers how to install and enable contrib modules in Drupal.
 
@@ -27,8 +28,8 @@ $ drush -y en views views_json views_ui
 ```
 
 ### Required custom modules:
-- UBC Qualtrics Drupal Integration [≫](https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration/tree/master/modules/custom/qualtrics_drupal_integration)
-- UBC Qualtrics Static Endpoint [≫](https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration/tree/master/modules/custom/qualtrics_static_endpoint)
+- UBC Qualtrics Drupal Integration [&#10140;](https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration/tree/master/modules/custom/qualtrics_drupal_integration)
+- UBC Qualtrics Static Endpoint [&#10140;](https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration/tree/master/modules/custom/qualtrics_static_endpoint)
 
 If you are comfortable using Git, you can 
 ```
@@ -37,10 +38,10 @@ $ git clone https://github.com/ubc-web-services/ubc_qualtrics_drupal_integration
 to download files. If not, you can choose to download a .zip file. [Here](https://stackoverflow.com/questions/2751227/how-to-download-source-in-zip-format-from-github/#18583977) is a good reference.
 
 ## Settings information in this demo:
-- Theme: UBC CLF 7.0.4 Drupal Theme 3.0 [≫](https://github.com/ubc-web-services/Megatron)
-- Administration theme: Adminimal - Responsive Administration Theme [≫](https://www.drupal.org/project/adminimal_theme)
+- Theme: UBC CLF 7.0.4 Drupal Theme 3.0 [&#10140;](https://github.com/ubc-web-services/Megatron)
+- Administration theme: Adminimal - Responsive Administration Theme [&#10140;](https://www.drupal.org/project/adminimal_theme)
 - Additional installed modules:
-	- Administration menu [≫](https://www.drupal.org/project/admin_menu)
+	- Administration menu [&#10140;](https://www.drupal.org/project/admin_menu)
 
 > Note: All screenshots are from Drupal website for demo. If you started your own Drupal website, you can install the modules mentioned above to have the same look and feel of the website we are demonstrating.
 
@@ -129,30 +130,51 @@ Click __JSON data document__ and click __Apply (all displays)__.
     },
 ...
 ```
-If you click __Settings__ next to JSON data document under __Format__ field, you can modify root object name (___nodes___ in this demo) and top-level child object(___node___ in this demo).<br /><br />
-3. Go to Qualtrics website and login using your CWL account.<br /><br />
-4. Create a survey, or locate the existing survey that you wish to import JSON feeds from your Drupal website.<br /><br />
-5. Create a question of type __Descriptive Text__.<br />
-For the purpose of demo, I created a question titled as ___Test drop-down list field___ and ___Test autocomplete field___.<br /><br />
-6. Click __Advanced Question Options__ on the left corner of the question card, and click __Add JavaScript__.<br /><br />
-![picture alt](screenshots/img21.png)<br /><br />
-7. There are __two__ options: to create a drop-down list or an autocomplete text field:<br />
-* To create a __drop-down list__, copy and paste the code provided below:<br />
+If you click __Settings__ next to JSON data document under __Format__ field, you can modify root object name (___nodes___ in this demo) and top-level child object(___node___ in this demo).
+
+3. Go to Qualtrics website and login using your CWL account.
+
+4. Create a survey, or locate the existing survey that you wish to import JSON feeds from your Drupal website.
+
+5. There are __two__ question types that will be discussed in this demo: creating a drop-down list or an autocomplete text field:
+
+* To create a __drop-down list__, create a question of type __Multiple Choice__. Then, right-click the question card of interest to locate __Add JavaScript__ option.
+
+![picture alt](screenshots/img21.png)
+
+Copy and paste the code provided below:
+
 In JavaScript:
 ```javascript
 Qualtrics.SurveyEngine.addOnReady(function() {
     $.getJSON('https://[YOUR_SITE_DOMAIN/ENDPOINT]', function(data) {
-        var nodes = data.options;
-        var counter = 1;
+
+        var nodes = data.nodes;
+
+        var counter = 0;
+
+        var new_html = '<select class="ChoiceStructure Selection QR-QIDXX QWatchTimer" name="QR~QIDXX" id="QR~QIDXX" data-runtime-value="runtime.Selected">';
+        console.log($('.QR-QIDXX').html())
         for (var node of nodes) {
-            document.getElementById("QR~QIDXX~" + counter).innerHTML = node.label;
+            new_html += '<option class="Selection" value="' + counter + '" id="QR~QIDXX~' + counter + '">' + node.node.title + '</option>';
             counter++;
         }
+        new_html += '</select>'
+        $('.QR-QIDXX').html(new_html);
+
     });
+
 });
 ```
 
-* To create an __autocomplete text field__, copy and paste the code provided below:<br />
+__NOTE:__ The variable ___counter___, which is incremented at each loop, will be assigned as a __value__ attribute to each option.
+
+* To create an __autocomplete text field__, create a question of type __Text Entry__. Then, right-click the question card of interest to locate __Add JavaScript__ option.
+
+![picture alt](screenshots/img21.png)
+
+Copy and paste the code provided below:
+
 In jQuery:
 ```javascript
 Qualtrics.SurveyEngine.addOnReady(function() {
@@ -180,10 +202,13 @@ In this case, the question ID is __QR~QID80__, highlighted in ___orange___ color
 
 Your __[YOUR_SITE_DOMAIN/ENDPOINT]__ is the path assigned to your page view created for exporting JSON feeds.
 
-8. Click __save__ button, and find ![picture alt](screenshots/img22.png) button on top of the page.
-9. Click and you will see a pop-up window that looks like this:
+6. Click __save__ button, and find ![picture alt](screenshots/img22.png) button on top of the page.
+
+7. Click and you will see a pop-up window that looks like this:
+
 ![picture alt](screenshots/img23.png)
-10. Click __Advanced__ option and add below lines to __Header__ section:
+
+8. Click __Advanced__ option and add below lines to __Header__ section:
 ```html
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -192,19 +217,8 @@ Your __[YOUR_SITE_DOMAIN/ENDPOINT]__ is the path assigned to your page view crea
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 ```
-11. Click __save__ button, and click your question to edit.
-12. Click __Rich Text Editor__.
-![picture alt](screenshots/img25.png)
-13. Click ![picture alt](screenshots/img26.png) button.
-14. For __Drop-down list__, copy and paste below line:
-```html
-<select id="select"></select>
-```
-15. For __Autocomplete text field__, copy and paste below line:
-```html
-<div class="ui-widget"><label for="tags">Enter: </label> <input id="tags" /></div>
-```
-16. Click __Save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
+
+11. Click __save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
 
 ## <div id="developers-info">For Developers: Guide to Debug</div>
 ### If questions are not displayed properly or failed to retrieve JSON feeds from Qualtrics side:
@@ -225,4 +239,4 @@ Hence, you want to make sure that these options are disabled in order to properl
 ![picture alt](screenshots/img27.png)
 3. Click __Save Configuration__.
 
-Back to Top [__≫__](#top)
+Back to Top [__&#10140;__](#top)
