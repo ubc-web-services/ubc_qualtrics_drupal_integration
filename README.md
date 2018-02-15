@@ -4,10 +4,11 @@ A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/
 
 ## Table of Contents:
 - Getting started [&#10140;](#getting-started)
-- Embedding Qualtrics survey to a website [&#10140;](#embedding-qualtrics-survey)
+- How to embed a Qualtrics survey to a website [&#10140;](#embedding-qualtrics-survey)
 - How to make an embedded survey responsive [&#10140;](#responsive-survey)
 - How to get [anonymous-survey-link] [&#10140;](#anonymous-survey-link)
-- Exporting JSON feeds from Drupal to Qualtrics [&#10140;](#exporting-json-feeds)
+- How to export JSON feeds from Drupal to Qualtrics [&#10140;](#exporting-json-feeds)
+- How to create an Autocomplete question type using imported JSON feeds on Qualtrics [&#10140;](#create-autocomplete-question)
 - For Developers: Guide to Debug [&#10140;](#developers-info)
 ## <div id="getting-started">Getting started:</div>
 To learn more about Drupal, please visit [here](https://drupal.org) for more information.
@@ -45,7 +46,7 @@ to download files. If not, you can choose to download a .zip file. [Here](https:
 
 > Note: All screenshots are from Drupal website for demo. If you started your own Drupal website, you can install the modules mentioned above to have the same look and feel of the website we are demonstrating.
 
-## <div id="embedding-qualtrics-survey">Embedding Qualtrics survey to a website:</div>
+## <div id="embedding-qualtrics-survey">How to embed a Qualtrics survey to a website:</div>
 1. Download Drupal and start building your own Drupal website.
 2. Create a basic page:
 Go to __Content > Add content > Page__.
@@ -100,7 +101,7 @@ For the purpose of demo, I created a survey titled as ___Test: Course Evaluation
 4. Go to __Distribution__ tab located at the top of the page, and the link will be provided when the page is loaded.
 ![picture alt](screenshots/img10.png)
 
-## <div id="exporting-json-feeds">Exporting JSON feeds from Drupal to Qualtrics:</div>
+## <div id="exporting-json-feeds">How to export JSON feeds from Drupal to Qualtrics:</div>
 1. Create a page view:
 Go to __Structure > Views > Add new view__ and select __Create a page__. Click __Continue & Edit__.
 Under __Format__ field, click __Unformatted list__.
@@ -132,11 +133,12 @@ Click __JSON data document__ and click __Apply (all displays)__.
 ```
 If you click __Settings__ next to JSON data document under __Format__ field, you can modify root object name (___nodes___ in this demo) and top-level child object(___node___ in this demo).
 
-3. Go to Qualtrics website and login using your CWL account.
+## <div id="create-autocomplete-question">How to create an Autocomplete question type using imported JSON feeds on Qualtrics</div>
+1. Go to Qualtrics website and login using your CWL account.
 
-4. Create a survey, or locate the existing survey that you wish to import JSON feeds from your Drupal website.
+2. Create a survey, or locate the existing survey that you wish to import JSON feeds from your Drupal website.
 
-5. To create an __autocomplete text field__, create a question of type __Single Line__ under __Text Entry__.
+3. To create an __autocomplete text field__, create a question of type __Single Line__ under __Text Entry__.
 
 ![picture alt](screenshots/img32.png)
 
@@ -173,13 +175,13 @@ In this case, the question ID is __QR~QID80__, highlighted in ___orange___ color
 
 Your __[YOUR_SITE_DOMAIN/ENDPOINT]__ is the path assigned to your page view created for exporting JSON feeds.
 
-6. Click __save__ button, and find ![picture alt](screenshots/img22.png) button on top of the page.
+4. Click __save__ button, and find ![picture alt](screenshots/img22.png) button on top of the page.
 
-7. Click and you will see a pop-up window that looks like this:
+5. Click and you will see a pop-up window that looks like this:
 
 ![picture alt](screenshots/img23.png)
 
-8. Click __Advanced__ option and add below lines to __Header__ section:
+6. Click __Advanced__ option and add below lines to __Header__ section:
 ```html
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -189,7 +191,7 @@ Your __[YOUR_SITE_DOMAIN/ENDPOINT]__ is the path assigned to your page view crea
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 ```
 
-11. Click __save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
+7. Click __save__ button, and click ![picture alt](screenshots/img24.png) to have a preview look of your survey.
 
 ## <div id="developers-info">For Developers: Guide to Debug</div>
 ### If questions are not displayed properly or failed to retrieve JSON feeds from Qualtrics side:
