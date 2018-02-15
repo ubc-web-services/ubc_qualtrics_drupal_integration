@@ -136,44 +136,7 @@ If you click __Settings__ next to JSON data document under __Format__ field, you
 
 4. Create a survey, or locate the existing survey that you wish to import JSON feeds from your Drupal website.
 
-5. There are __two__ question types that will be discussed in this demo: creating a drop-down list or an autocomplete text field:
-
-* To create a __drop-down list__, create a question of type __Dropdown List__ under __Multiple Choice__.
-
-![picture alt](screenshots/img31.png)
-
-Then, right-click the question card of interest to locate __Add JavaScript__ option.
-
-![picture alt](screenshots/img21.png)
-
-Copy and paste the code provided below:
-
-In JavaScript:
-```javascript
-Qualtrics.SurveyEngine.addOnReady(function() {
-    $.getJSON('https://[YOUR_SITE_DOMAIN/ENDPOINT]', function(data) {
-
-        var nodes = data.nodes;
-
-        var counter = 0;
-
-        var new_html = '<select class="ChoiceStructure Selection QR-QIDXX QWatchTimer" name="QR~QIDXX" id="QR~QIDXX" data-runtime-value="runtime.Selected">';
-        console.log($('.QR-QIDXX').html())
-        for (var node of nodes) {
-            new_html += '<option class="Selection" value="' + counter + '" id="QR~QIDXX~' + counter + '">' + node.node.title + '</option>';
-            counter++;
-        }
-        new_html += '</select>'
-        $('.QR-QIDXX').html(new_html);
-
-    });
-
-});
-```
-
-__NOTE:__ The variable ___counter___, which is incremented at each loop, will be assigned as a __value__ attribute to each option.
-
-* To create an __autocomplete text field__, create a question of type __Single Line__ under __Text Entry__.
+5. To create an __autocomplete text field__, create a question of type __Single Line__ under __Text Entry__.
 
 ![picture alt](screenshots/img32.png)
 
