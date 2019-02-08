@@ -154,9 +154,9 @@ Qualtrics.SurveyEngine.addOnReady(function() {
     $.getJSON('https://[YOUR_SITE_DOMAIN/ENDPOINT]', function(data) {
         var nodes = data.nodes;
         var availableTags = [];
-        for (var node of nodes) {
-            availableTags.push(node.node.title);
-        }
+        $.each(nodes, function(key, node) {
+          availableTags.push(node.node.title);
+        });
         var org_html = '<input type="TEXT" autocomplete="off" id="QR~QIDXX" value="" class="InputText QR-QIDXX QWatchTimer ui-autocomplete-input" name="QR~QIDXX~TEXT" data-runtime-textvalue="runtime.Value" style="width: 324px;" aria-describedby="QR~QIDXX~VALIDATION">'
         var new_html = '<div id="ui-widget">' + org_html + '</div>';
         $('.QR-QIDXX').html(new_html);
