@@ -1,6 +1,6 @@
 # <div id="top">UBC Qualtrics-Drupal integration</div>
 A link to Qualtrics survey for demo: https://ubc.ca1.qualtrics.com/jfe/form/SV_0oiEz2f76DneukR<br>
-A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/
+A link to Drupal website for demo: https://qualtrics.dp7prod.webi.it.ubc.ca/ (Currently not online, but coming back online soon)
 
 ## Table of Contents:
 - Getting started [&#10140;](#getting-started)
